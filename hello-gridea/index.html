@@ -1,155 +1,194 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" >
+    
+<meta charset="utf-8" >
 
-<title>Hello Gridea | 个人练习生</title>
+<title># Mybatis | 个人练习生</title>
+<meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://2898531823.github.io/favicon.ico?v=1603108746456">
+<link rel="shortcut icon" href="https://2898531823.github.io/favicon.ico?v=1603109349403">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://2898531823.github.io/styles/main.css">
 
 
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
 
-    <meta name="description" content="👏  欢迎使用 Gridea ！
-✍️  Gridea 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...
-
-Github
-Gridea 主页
-示例网站
-特性👇
-📝  你可以使用最酷的 Markdo..." />
-    <meta name="keywords" content="Gridea" />
   </head>
   <body>
     <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://2898531823.github.io">
-        <img src="https://2898531823.github.io/images/avatar.png?v=1603108746456" class="site-logo">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://2898531823.github.io">
+        <img class="avatar" src="https://2898531823.github.io/images/avatar.png?v=1603109349403" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://2898531823.github.io">
         <h1 class="site-title">个人练习生</h1>
       </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
     </div>
-    <div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
         
-          <a href="/" class="site-nav">
+          <a href="/" class="menu purple-link">
             首页
           </a>
         
       
         
-          <a href="/archives" class="site-nav">
-            归档
+          <a href="/archives" class="menu purple-link">
+            列表
           </a>
         
       
         
-          <a href="/tags" class="site-nav">
+          <a href="/tags" class="menu purple-link">
             标签
           </a>
         
       
         
-          <a href="/post/about" class="site-nav">
+          <a href="/post/about" class="menu purple-link">
             关于
           </a>
         
       
     </div>
   </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+            <div class="feature-container" style="background-image: url('https://2898531823.github.io/post-images/hello-gridea.png')">
+            </div>
+          
+          <h2 class="post-title"># Mybatis</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2018-12-12</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://2898531823.github.io/lpGVhQUrh/">
+                    Gridea
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <h2 id="xml映射文件">XML映射文件</h2>
+<h3 id="myhabits参数处理">Myhabits参数处理</h3>
+<p>Mybatis 多个参数会做特殊处理,多个参数会被封装成一个map</p>
+<p>key:param1...paramn</p>
+<p>vaule:传入的参数</p>
+<p>#{param1}就是从map中获取对应的第一个vaule</p>
+<p>@param(&quot;xx&quot;)参数注解可以明确指定封装参数时map的key为xx</p>
+<p>如果多个参数符合pojo的属性,直接传入pojo对象,#{属性}</p>
+<p>如果多个参数不符合,则可以传入一个map,#{map的key}</p>
+<h3 id="select">select</h3>
+<h4 id="mapkey">@MapKey</h4>
+<p>@MapKey可以指定一个字段作为map的key返回,一般设置为唯一键</p>
+<h3 id="结果映射">结果映射</h3>
+<h4 id="resultmap">resultMap</h4>
+<p>自定义返回类型映射</p>
+<p><id/>主键</p>
+<p><result>普通键</p>
+<p>column 数据库字段 property pojo字段</p>
+<pre><code class="language-xml">&lt;resultMap id=&quot;userResultMap&quot; type=&quot;User&quot;&gt;
+  &lt;id property=&quot;id&quot; column=&quot;user_id&quot; /&gt;
+  &lt;result property=&quot;username&quot; column=&quot;user_name&quot;/&gt;
+  &lt;result property=&quot;password&quot; column=&quot;hashed_password&quot;/&gt;
+&lt;/resultMap&gt;
+</code></pre>
+<h2 id="与取值的区别">#{}与${}取值的区别</h2>
+<p>#{}是预编译的,用占位符替代sql语句中的参数,PrepareedStatement,防止sql注入.</p>
+<p>${}是直接拼接在sql语句中,有安全问题</p>
+<p>在大多数情况中,都应该使用#{},原生jdbc不支持占位符就是用${}</p>
+<h2 id="关联查询">关联查询</h2>
+<h3 id="级联属性封装-一对多">级联属性封装--一对多</h3>
+<pre><code class="language-xml">&lt;resultMap type=&quot;Category&quot; id=&quot;categoryBean&quot;&gt;
+            &lt;id column=&quot;cid&quot; property=&quot;id&quot; /&gt;
+            &lt;result column=&quot;cname&quot; property=&quot;name&quot; /&gt;
+     
+            &lt;!-- 一对多的关系 --&gt;
+            &lt;!-- property: 指的是集合属性的值, ofType：指的是集合中元素的类型 --&gt;
+            &lt;collection property=&quot;products&quot; ofType=&quot;Product&quot;&gt;
+                &lt;id column=&quot;pid&quot; property=&quot;id&quot; /&gt;
+                &lt;result column=&quot;pname&quot; property=&quot;name&quot; /&gt;
+                &lt;result column=&quot;price&quot; property=&quot;price&quot; /&gt;
+            &lt;/collection&gt;
+        &lt;/resultMap&gt;
+</code></pre>
+<h3 id="association-多对一">association--多对一</h3>
+<pre><code class="language-xml">&lt;!--category.xml--&gt;
+&lt;resultMap type=&quot;Product&quot; id=&quot;productBean&quot;&gt;
+            &lt;id column=&quot;pid&quot; property=&quot;id&quot; /&gt;
+            &lt;result column=&quot;pname&quot; property=&quot;name&quot; /&gt;
+            &lt;result column=&quot;price&quot; property=&quot;price&quot; /&gt;
+     
+            &lt;!-- 多对一的关系 --&gt;
+            &lt;!-- property: 指的是属性名称, javaType：指的是属性的类型 --&gt;
+            &lt;association property=&quot;category&quot; javaType=&quot;Category&quot;&gt;
+                &lt;id column=&quot;cid&quot; property=&quot;id&quot;/&gt;
+                &lt;result column=&quot;cname&quot; property=&quot;name&quot;/&gt;
+            &lt;/association&gt;
+        &lt;/resultMap&gt;
+</code></pre>
+
+          </div>
+        </div>
+
         
+      </div>
+
       
-        
+
+      <div class="site-footer">
+  <div class="slogan">温故而知新</div>
+  <div class="social-container">
+    
       
-        
+    
       
-        
+    
       
-        
+    
       
-    </div>
-    <div class="site-description">
-      温故而知新
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://2898531823.github.io/atom.xml" target="_blank">RSS</a>
-    </div>
+    
+      
+    
   </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://2898531823.github.io/atom.xml" target="_blank">RSS</a>
 </div>
 
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">Hello Gridea</h2>
-            <div class="post-date">2018-12-12</div>
-            
-              <div class="feature-container" style="background-image: url('https://2898531823.github.io/post-images/hello-gridea.png')">
-              </div>
-            
-            <div class="post-content" v-pre>
-              <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
-
-            </div>
-            
-              <div class="tag-container">
-                
-                  <a href="https://2898531823.github.io/lpGVhQUrh/" class="tag">
-                    Gridea
-                  </a>
-                
-              </div>
-            
-            
-
-            
-
-          </div>
-
-        </div>
-      </div>
     </div>
+    <script type="application/javascript">
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-<script type="application/javascript">
-
-AOS.init();
+hljs.initHighlightingOnLoad()
 
 var app = new Vue({
   el: '#app',
@@ -159,8 +198,6 @@ var app = new Vue({
 })
 
 </script>
-
-
 
 
 
